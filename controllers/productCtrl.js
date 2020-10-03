@@ -9,7 +9,7 @@ const productCtrl = {
 
   createProduct: async (req, res) => {
     const { product_id, title, images, description, price } = req.body;
-    const product = await Products.findOne({ product_id: product_id });
+    const product = await Products.findOne({ title: title });
     if (product)
       return res.status(400).json({
         msg: "The product already exists",
