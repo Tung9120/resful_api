@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const productRouter = require("./routes/productRouter");
 const userRouter = require("./routes/authRouter");
-const authMiddleware = require("./middlewares/verifyToken");
+// const authMiddleware = require("./middlewares/verifyToken");
 
 const app = express();
 app.use(express.json());
@@ -23,7 +23,7 @@ mongoose.connect(
     useUnifiedTopology: true,
     useCreateIndex: true,
     useNewUrlParser: true,
-    useFindAndModify: false,
+    useFindAndModify: true,
   },
   (err) => {
     if (err) throw err;

@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const userCtrl = {
   getIndex: (req, res) => {
+    console.log(req.header("auth-token"));
     res.json({ msg: "index" });
   },
 
@@ -51,11 +52,11 @@ const userCtrl = {
 
     if (user && validPass) {
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-      res.header("auth-token", token);
+      res.header("auth-token", token).send(token);
       res.locals.user = user;
       res.json({ msg: token });
       // res.send(token);
-      next();
+      // next();
     }
   },
 
